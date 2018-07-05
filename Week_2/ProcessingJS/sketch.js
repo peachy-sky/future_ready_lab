@@ -1,7 +1,7 @@
 var ballList = [];
 
 function setup() {																		//setup is run once at the start
-	background(0, 0, 0);
+	background(255, 164, 204);
 	createCanvas(parseInt(prompt("What do you want the canvas's X length to be?")), parseInt(prompt("What do you want the canvas's Y length to be?")));
 																						//ask what size the user wants the window to be
 	var circleAmount =random([2, 5, 10, 16]);
@@ -15,7 +15,7 @@ function Ball(x, y, diameter, color, xSpeed, ySpeed){
 	this.xCoor = x;																		//"this" is a keyword that refers to the individual object
 	this.yCoor = y;
 	this.diameter = diameter;
-	this.color = color || [0, 0, 0];													// || [0, 0, 0] makes the default/start color black
+	this.color = color || [255, 164, 204];													// || [0, 0, 0] makes the default/start color black
 	this.xSpeed = xSpeed || 12;
 	this.ySpeed = ySpeed || 5;
 }
@@ -36,10 +36,10 @@ function draw() {																		//draw the circle
 		ellipse(ballList[i].xCoor, ballList[i].yCoor, ballList[i].diameter);
 		if(ballList[i].xCoor >= width){													//if hit the right/left edge of the canvas
 			ballList[i].color = [random(0, 255), random(0, 255), random(0, 255)]; 		//makes the circle a random color
-			ballList[i].xSpeed = -ballList[i].xSpeed; 									//change the circle speed to make it move left
+			ballList[i].xSpeed = -(ballList[i].xSpeed + 1); 									//change the circle speed to make it move left
 		}else if(ballList[i].xCoor < 0) {
 			ballList[i].color = [random(0, 255), random(0, 255), random(0, 255)];		//make the circle a random color
-			ballList[i].xSpeed = -ballList[i].xSpeed; 									//change the circle speed to make it move right
+			ballList[i].xSpeed = -ballList[i].xSpeed + 1; 									//change the circle speed to make it move right
 		}
 		ballList[i].xCoor += ballList[i].xSpeed
 		if(ballList[i].yCoor >= height){												//makes the circle diameter random
