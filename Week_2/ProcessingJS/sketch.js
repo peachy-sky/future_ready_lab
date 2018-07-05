@@ -1,14 +1,15 @@
-//define an object that describes a circle
-/* var circle = {
-	diameter: 20,
-	xCoor: 0,
-	yCoor: 0,
-	//color is red
-	color: [255,0,0],
-	xSpeed: 8,
-	ySpeed: 8
-};
-*/
+var ballList = [];
+
+function setup() {																		//setup is run once at the start
+	background(0, 0, 0);
+	createCanvas(parseInt(prompt("What do you want the canvas's X length to be?")), parseInt(prompt("What do you want the canvas's Y length to be?")));
+																						//ask what size the user wants the window to be
+	var circleAmount =random([2, 5, 10, 16]);
+	for( var i = 0; i < circleAmount; i++){
+		ballList[i] = new Ball (random(0, width), random(0, height), 15);
+	}
+}
+
 
 function Ball(x, y, diameter, color, xSpeed, ySpeed){
 	this.xCoor = x;																		//"this" is a keyword that refers to the individual object
@@ -18,37 +19,17 @@ function Ball(x, y, diameter, color, xSpeed, ySpeed){
 	this.xSpeed = xSpeed || 12;
 	this.ySpeed = ySpeed || 5;
 }
-var circle = new Ball(30, 30, 15);														//define global variables
-var circle2 = new Ball(30, 30, 15);
-var circle3 = new Ball(Math.random() * (width-diameter)+(diameter/2), Math.random() * (height-diameter)+(diameter/2), 15);
-var ballList = [circle, circle2, circle3];
 
 
-function setup() {																		//setup is run once at the start
-	createCanvas(parseInt(prompt("What do you want the canvas's X length to be?")), parseInt(prompt("What do you want the canvas's Y length to be?")));																								//ask what size the user wants the window to be
-}
+
+/*function collision(ball1, ball2) {
+	var space =;
+	var radii = (ball1.diameter/2)
+	if()
+}*/
 
 
-var randomNum = Math.round(Math.random() * 3);											//create a variable that chooses how many circles are drawn
-	if(randomNum == 0){
-		randomNum == 2
-	}
-	else if(randomNum == 1){
-		randomNum == 5
-	}
-	else if(randomNum == 2){
-		randomNum == 9
-	}
-	else randomNum == 16
-
-
-function randomColor() {
-	return [random(0,256), random(0, 256), random(0, 256)];
-}
-
-
-//draw the circle
-function draw() {
+function draw() {																		//draw the circle
 	background(255,255,255);
 	for(var i = 0; i < ballList.length; i++){
 		fill(ballList[i].color);
